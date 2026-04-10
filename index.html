@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Shop Style Hub | Tech Meets Fashion in South Africa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a25;
+            --bg-elevated: #252532;
+            --bg-hover: #2a2a3a;
+            --accent-orange: #ff5722;
+            --accent-pink: #ff4081;
+            --accent-purple: #7c4dff;
+            --accent-gold: #ffc107;
+            --accent-green: #00e676;
+            --accent-blue: #2979ff;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0c0;
+            --text-muted: #6b6b7b;
+            --border: #2a2a3a;
+            --gradient-primary: linear-gradient(135deg, #ff5722 0%, #ff4081 50%, #7c4dff 100%);
+            --gradient-card: linear-gradient(135deg, #1a1a25 0%, #252532 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Announcement Bar */
+        .announcement-bar {
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+            padding: 0.75rem;
+            font-weight: 700;
+            font-size: 0.875rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .announcement-bar::before {
+            content: 'ðŸ”¥';
+            margin-right: 0.5rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(18, 18, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 20px rgba(255, 87, 34, 0.4);
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 4px 20px rgba(255, 87, 34, 0.4); }
+            50% { box-shadow: 0 4px 30px rgba(255, 64, 129, 0.6); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-link.active {
+            color: var(--accent-pink);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .region-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-card);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .btn-icon:hover {
+            background: var(--bg-elevated);
+            color: var(--accent-pink);
+            border-color: var(--accent-pink);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 18px;
+            height: 18px;
+            background: var(--accent-pink);
+            border-radius: 50%;
+            font-size: 0.625rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-card);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 64, 129, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 230, 118, 0.15);
+            color: var(--accent-green);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.25rem;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-stat-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .hero-stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(255, 87, 34, 0.4);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 87, 34, 0.5);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-hover);
+            border-color: var(--accent-pink);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .floating-card:nth-child(1) {
+            top: 0;
+            right: 0;
+            animation-delay: 0s;
+            z-index: 3;
+        }
+
+        .floating-card:nth-child(2) {
+            top: 40%;
+            left: 0;
+            animation-delay: 2s;
+            z-index: 2;
+        }
+
+        .floating-card:nth-child(3) {
+            bottom: 0;
+            right: 20%;
+            animation-delay: 4s;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .mini-deal {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .mini-deal-img {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-elevated);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .mini-deal-info h4 {
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .mini-deal-price {
+            color: var(--accent-green);
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            font-weight: 600;
+        }
+
+        .trust-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-elevated);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        /* Category Pills */
+        .filter-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .category-pills {
+            display: flex;
+            gap: 0.75rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            flex: 1;
+        }
+
+        .pill {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+            font-size: 0.9375rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pill:hover {
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .pill.active {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(255, 87, 34, 0.4);
+        }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .commission-badge {
+            background: rgba(0, 230, 118, 0.15);
+            color: var(--accent-green);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        /* Deals Grid */
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .deal-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .deal-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-pink);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .deal-card.featured {
+            border-color: var(--accent-pink);
+            box-shadow: 0 0 0 1px var(--accent-pink), 0 10px 30px rgba(255, 64, 129, 0.2);
+        }
+
+        .deal-card.fashion {
+            border-color: var(--accent-purple);
+        }
+
+        .deal-card.fashion:hover {
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 0 1px var(--accent-purple), 0 10px 30px rgba(124, 77, 255, 0.2);
+        }
+
+        .deal-header {
+            position: relative;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--bg-elevated), var(--bg-card));
+        }
+
+        .deal-badges {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 2;
+        }
+
+        .badge {
+            padding: 0.375rem 0.875rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-discount {
+            background: var(--accent-pink);
+            color: white;
+            box-shadow: 0 4px 10px rgba(255, 64, 129, 0.3);
+        }
+
+        .badge-commission {
+            background: var(--accent-green);
+            color: #000;
+            box-shadow: 0 4px 10px rgba(0, 230, 118, 0.3);
+        }
+
+        .badge-trending {
+            background: var(--accent-purple);
+            color: white;
+        }
+
+        .badge-fashion {
+            background: var(--accent-gold);
+            color: #000;
+        }
+
+        .deal-actions {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 2;
+        }
+
+        .action-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+            border: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .action-btn:hover {
+            background: var(--accent-pink);
+            transform: scale(1.1);
+        }
+
+        .deal-image {
+            width: 100%;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
+        }
+
+        .deal-timer {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid rgba(255,214,0,0.3);
+        }
+
+        .deal-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .deal-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .deal-category {
+            color: var(--accent-pink);
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .deal-category.fashion {
+            color: var(--accent-purple);
+        }
+
+        .deal-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .deal-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+            color: var(--text-primary);
+        }
+
+        .deal-description {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .deal-price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .price-current {
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: var(--accent-green);
+        }
+
+        .price-original {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+
+        .price-saved {
+            background: rgba(0, 230, 118, 0.15);
+            color: var(--accent-green);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        /* Affiliate Section */
+        .affiliate-section {
+            background: linear-gradient(135deg, rgba(255,87,34,0.1), rgba(124,77,255,0.1));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .affiliate-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .affiliate-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .affiliate-earn {
+            background: rgba(0, 230, 118, 0.2);
+            color: var(--accent-green);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .affiliate-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .affiliate-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.875rem;
+            background: var(--bg-elevated);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .affiliate-link:hover {
+            background: var(--bg-hover);
+            border-color: var(--accent-pink);
+            color: var(--text-primary);
+        }
+
+        .affiliate-link.best {
+            border-color: var(--accent-green);
+            background: rgba(0, 230, 118, 0.1);
+        }
+
+        .retailer-name {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .retailer-price {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .retailer-price.best {
+            color: var(--accent-green);
+        }
+
+        .commission-tag {
+            font-size: 0.75rem;
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        .deal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+        }
+
+        .deal-verified {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: var(--accent-blue);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .grab-btn {
+            width: 100%;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .grab-btn:hover {
+            background: var(--gradient-primary);
+            border-color: transparent;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 87, 34, 0.3);
+        }
+
+        /* Stats Dashboard */
+        .stats-dashboard {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-pink);
+        }
+
+        .stat-icon-large {
+            width: 56px;
+            height: 56px;
+            background: var(--bg-elevated);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto 1rem;
+        }
+
+        .stat-value-large {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label-large {
+            color: var(--text-muted);
+            font-size: 0.9375rem;
+            font-weight: 600;
+        }
+
+        /* Disclosure */
+        .disclosure {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+        }
+
+        .disclosure-icon {
+            font-size: 1.25rem;
+        }
+
+        /* Retailer Apply Section */
+        .retailer-apply {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .retailer-apply h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .retailer-apply p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .apply-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .apply-card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .apply-card:hover {
+            border-color: var(--accent-pink);
+            transform: translateY(-4px);
+        }
+
+        .apply-card h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .apply-card .commission {
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .apply-card .status {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .apply-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+        }
+
+        .apply-btn:hover {
+            background: var(--accent-pink);
+            border-color: var(--accent-pink);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 4rem;
+            padding: 3rem 0;
+            border-top: 1px solid var(--border);
+            background: var(--bg-secondary);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.25rem;
+        }
+
+        .social-link:hover {
+            background: var(--accent-pink);
+            color: white;
+            border-color: var(--accent-pink);
+            transform: translateY(-3px);
+        }
+
+        .footer-column h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-pink);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 9999;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 230, 118, 0.15);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .hero-visual {
+                display: none;
+            }
+            .stats-dashboard {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .deals-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats-dashboard {
+                grid-template-columns: 1fr;
+            }
+            .trust-bar {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        ðŸ”¥ Fashion + Tech Deals Updated Daily â€¢ Zando 9% Commission â€¢ Mr Price 7% â€¢ Apply Now!
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">ðŸ”¥</div>
+                <span>One Shop Style Hub</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="#" class="nav-link active">Style Tech</a>
+                <a href="#" class="nav-link">Fashion</a>
+                <a href="#" class="nav-link">Gadgets</a>
+                <a href="#" class="nav-link">Beauty Tech</a>
+                <a href="#" class="nav-link">Sneakers</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="region-badge">
+                    <span>ðŸ‡¿ðŸ‡¦</span>
+                    <span>South Africa</span>
+                </div>
+                <button class="btn-icon" onclick="showToast('3 new deals added!')">
+                    ðŸ””
+                    <span class="notification-badge">3</span>
+                </button>
+                <button class="btn-icon" onclick="showToast('Saved to favorites')">
+                    â™¡
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="live-dot"></span>
+                    Live Now â€¢ Updated 8 minutes ago
+                </div>
+                <h1>Style Your <span>Tech</span>. Tech Your <span>Style</span>.</h1>
+                <p>South Africa's first fashion + tech deal hub. Earn up to 10% commission on style tech, sneakers, and gadgets from Zando, Mr Price, and premium retailers.</p>
+                
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">12</span>
+                        <span class="hero-stat-label">Active Deals</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">7.2%</span>
+                        <span class="hero-stat-label">Avg Commission</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">4</span>
+                        <span class="hero-stat-label">Partner Networks</span>
+                    </div>
+                </div>
+                
+                <div class="hero-cta">
+                    <a href="#deals" class="btn-primary">
+                        Shop Style Tech
+                        <span>â†’</span>
+                    </a>
+                    <button class="btn-secondary" onclick="showToast('Apply to affiliate programs to unlock all deals!')">
+                        <span>ðŸ’°</span>
+                        Become Affiliate
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="floating-card">
+                    <div class="mini-deal">
+                        <div class="mini-deal-img">âŒš</div>
+                        <div class="mini-deal-info">
+                            <h4>Galaxy Watch 6</h4>
+                            <div class="mini-deal-price">R4,299 + 6%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating-card">
+                    <div class="mini-deal">
+                        <div class="mini-deal-img">ðŸ‘Ÿ</div>
+                        <div class="mini-deal-info">
+                            <h4>Zando Sneakers</h4>
+                            <div class="mini-deal-price">R899 + 9%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating-card">
+                    <div class="mini-deal">
+                        <div class="mini-deal-img">ðŸŽ§</div>
+                        <div class="mini-deal-info">
+                            <h4>Sony XM5</h4>
+                            <div class="mini-deal-price">R5,499 + 4%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust Bar -->
+        <div class="trust-bar">
+            <div class="trust-item">
+                <div class="trust-icon">ðŸ’°</div>
+                <span>Up to 10% Commission</span>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">ðŸ‡¿ðŸ‡¦</div>
+                <span>SA Retailers Only</span>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">ðŸ”„</div>
+                <span>Daily New Deals</span>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">âš¡</div>
+                <span>Instant Approval</span>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon">ðŸ›¡ï¸</div>
+                <span>Verified Programs</span>
+            </div>
+        </div>
+
+        <!-- Stats Dashboard -->
+        <div class="stats-dashboard">
+            <div class="stat-box">
+                <div class="stat-icon-large">ðŸ‘Ÿ</div>
+                <div class="stat-value-large">9%</div>
+                <div class="stat-label-large">Zando Fashion</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon-large">ðŸ‘•</div>
+                <div class="stat-value-large">7%</div>
+                <div class="stat-label-large">Mr Price</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon-large">âŒš</div>
+                <div class="stat-value-large">6%</div>
+                <div class="stat-label-large">Style Tech</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon-large">ðŸŽ§</div>
+                <div class="stat-value-large">4%</div>
+                <div class="stat-label-large">Electronics</div>
+            </div>
+        </div>
+
+        <!-- Disclosure -->
+        <div class="disclosure">
+            <span class="disclosure-icon">â„¹ï¸</span>
+            <span><strong>Affiliate Disclosure:</strong> We earn 4-10% commission when you shop through our links. This helps us find the best deals at no extra cost to you. All programs verified with SA retailers.</span>
+        </div>
+
+        <!-- Category Pills -->
+        <div class="filter-bar">
+            <div class="category-pills">
+                <button class="pill active">ðŸ”¥ All Deals</button>
+                <button class="pill">âŒš Wearables</button>
+                <button class="pill">ðŸ‘Ÿ Sneakers</button>
+                <button class="pill">ðŸŽ§ Audio</button>
+                <button class="pill">ðŸ‘• Fashion</button>
+                <button class="pill">ðŸ’¼ Accessories</button>
+            </div>
+        </div>
+
+        <!-- DEALS SECTION -->
+        <div id="deals">
+            
+            <!-- STYLE TECH SECTION -->
+            <div class="section-header">
+                <h2 class="section-title">âŒš Style Tech <span style="font-size: 0.875rem; font-weight: 500; color: var(--text-muted);">(High Commission Crossovers)</span></h2>
+                <span class="commission-badge">6-10% Commission</span>
+            </div>
+
+            <div class="deals-grid">
+                <!-- DEAL 1: Galaxy Watch (Featured) -->
+                <div class="deal-card featured">
+                    <div class="deal-header">
+                        <div class="deal-badges">
+                            <span class="badge badge-discount">-20% OFF</span>
+                            <span class="badge badge-commission">6% COMM</span>
+                        </div>
+                        <div class="deal-actions">
+                            <button class="action-btn" onclick="toggleSave(this)">â™¡</button>
+                            <button class="action-btn">â†—ï¸</button>
+                        </div>
+                        <div class="deal-image">âŒš</div>
+                        <div class="deal-timer">
+                            <span>â°</span>
+                            Ends in 5 days
+                        </div>
+                    </div>
+                    <div class="deal-content">
+                        <div class="deal-meta">
+                            <span class="deal-category">Wearables</span>
+                            <span class="deal-rating">â­ 4.8 (2,341)</span>
+                        </div>
+                        <h3 class="deal-title">Samsung Galaxy Watch 6 44mm</h3>
+                        <p class="deal-description">The ultimate fashion tech accessory. Fitness tracking meets style. Sleep coaching, body composition analysis.</p>
+                        <div class="deal-price-row">
+                            <span class="price-current">R4,299</span>
+                            <span class="price-original">R5,499</span>
+                            <span class="price-saved">Save R1,200</span>
+                        </div>
+                        
+                        <div class="affiliate-section">
+                            <div class="affiliate-header">
+                                <span class="affiliate-title">Shop & Earn Commission</span>
+                                <span class="affiliate-earn">You earn: R258</span>
+                            </div>
+                            <div class="affiliate-links">
+                                <a href="https://www.samsung.com/za/watches/galaxy-watch6/?aff=YOUR_SAMSUNG_ID" target="_blank" rel="nofollow sponsored" class="affiliate-link best" onclick="trackClick('watch-samsung')">
+                                    <span class="retailer-name">ðŸ›’ Samsung SA</span>
+                                    <span>
+                                        <span class="retailer-price best">R4,299 âœ“ Best</span>
+                                        <span class="commission-tag">6% = R258</span>
+                                    </span>
+                                </a>
+                                <a href="https://www.takealot.com/samsung-galaxy-watch-6?aff=YOUR_TAKEALOT_ID" target="_blank" rel="nofollow sponsored" class="affiliate-link" onclick="trackClick('watch-takealot')">
+                                    <span class="retailer-name">ðŸ“¦ Takealot</span>
+                                    <span class="retailer-price">R4,499</span>
+                                </a>
+                                <a href="https://www.incredible.co.za/samsung-galaxy-watch-6?aff=YOUR_INCREDIBLE_ID" target="_blank" rel="nofollow sponsored" class="affiliate-link" onclick="trackClick('watch-incredible')">
+                                    <span class="retailer-name">âš¡ Incredible</span>
+                                    <span class="retailer-price">R4,599</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="deal-footer" style="margin-top: 1rem;">
+                            <div class="deal-verified">
+                                <span>âœ“</span>
+                                <span>Verified 2h ago</span>
+                            </div>
+                        </div>
+                        <a href="https://www.samsung.com/za/watches/galaxy-watch6/?aff=YOUR_SAMSUNG_ID" target="_blank" rel="nofollow sponsored" class="grab-btn" onclick="trackClick('watch-main')">
+                            Shop Best Deal â†’ Earn R258
+                        </a>
+                    </div>
+                </div>
+
+                <!-- DEAL 2: Sony XM5 -->
+                <div class="deal-card">
+                    <div class="deal-header">
+                        <div class="deal-badges">
+                            <span class="badge badge-discount">-31% OFF</span>
+                            <span class="badge badge-commission">4% COMM</span>
+                        </div>
+                        <div class="deal-actions">
+                            <button class="action-btn" onclick="toggleSave(this)">â™¡</button>
+                            <button class="action-btn">â†—ï¸</button>
+                        </div>
+                        <div class="deal-image">ðŸŽ§</div>
+                        <div class="deal-timer">
+                            <span>â°</span>
+                            3 days left
+                        </div>
+                    </div>
+                    <div class="deal-content">
+                        <div class="deal-meta">
+                            <span class="deal-category">Audio Style</span>
+                            <span class="deal-rating">â­ 4.9 (5,432)</span>
+                        </div>
+                        <h3 class="deal-title">Sony WH-1000XM5 Premium</h3>
+                        <p class="deal-description">Fashion statement headphones. Industry-leading noise canceling. 30-hour battery. The ultimate street style accessory.</p>
+                        <div class="deal-price-row">
+                            <span class="price-current">R5,499</span>
+                            <span class="price-original">R7,999</span>
+                            <span class="price-saved">Save R2,500</span>
+                        </div>
+                        
+                        <div class="affiliate-section">
+                            <div class="affiliate-header">
+                                <span class="affiliate-title">Shop & Earn Commission</span>
+                                <span class="affiliate-earn">You earn: R220</span>
+                            </div>
+                            <div class="affiliate-links">
+                                <a href="https://www.takealot.com/sony-wh-1000xm5?aff=YOUR_TAKEALOT_ID" target="_blank" rel="nofollow sponsored" class="affiliate-link best" onclick="trackClick('sony-takealot')">
+                                    <span class="retailer-name">ðŸ“¦ Takealot</span>
+                                    <span>
+                                        <span class="retailer-price best">R5,499 âœ“ Best</span>
+                                        <span class="commission-tag">4% = R220</span>
+                                    </span>
+                                </a>
+                                <a href="https://www.hificorp.co.za/sony-xm5?aff=YOUR_HIFICORP_ID" target="_blank" rel="nofollow sponsored" class="affiliate-link" onclick="trackClick('sony-hificorp')">
+                                    <span class="retailer-name">ðŸ”Š HiFi Corp</span>
+                                    <span class="retailer-price">R5,799</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="deal-footer" style="margin-top: 1rem;">
+                            <div class="deal-verified">
+                                <span>âœ“</span>
+                                <span>Verified 1h ago</span>
+                            </div>
+                        </div>
+                        <a href="https://www.takealot.com/sony-wh-1000xm5?aff=YOUR_TAKEALOT_ID" target="_blank" rel="nofollow sponsored" class="grab-btn" onclick="trackClick('sony-main')">
+                            Shop Best Deal â†’ Earn R220
+                        </a>
+                    </div>
+                </div>
+
+                <!-- DEAL 3: Garmin -->
+                <div class="deal-card">
+                    <div class="deal-header">
+                        <div class="deal-badges">
+                            <span class="badge badge-discount">-40% OFF</span>
+                            <span class="badge badge-commission">7% COMM</span>
+                        </div>
+                        <div class="deal-actions">
+                            <button class="action-btn" onclick="toggleSave(this)">â™¡</button>
+                            <button class="action-btn">â†—ï¸</button>
+                        </div>
+                        <div class="deal-image">ðŸƒ</div>
+                        <div class="deal-timer">
+                            <span>â°</span>
+                            Flash sale!
+                        </div>
+                    </div>
+                    <div class="deal-content">
+                        <div class="deal-meta">
+                            <span class="deal-category">Outdoor Tech</span>
+                            <span class="deal-rating">â­ 4.7 (892)</span>
+                        </div>
+                        <h3 class="deal-title">Garmin Fenix 7 Pro Solar</h3>
+                        <p class="deal-description">Adventure meets style. Solar charging, 28-day battery, multi-band GPS. The fashion-forward fitness watch.</p>
+                        <div class="deal-price-row">
+                            <span class="price-current">R8,999</span>
+                            <span class="price-original">R14,999</span>
+                            <span class="price-saved">Save R6,000</span>
+                        </div>
+                        
+                        <div class="affiliate-section">
+                            <div class="affiliate-header">
+                                <span class="affiliate-title">Shop & Earn Commission</span>
+                                <span class="affiliate-earn">You earn: R630</span>
+                            </div>
+                            <div class="affiliate-links">
+                                <a href="https://www.capeunionmart.co.za/garmin-fenix-7?aff=YOUR_CUM_ID" target="_blank" rel="nofollow sponsored" class="affiliate-link best" onclick="trackClick('garmin-cum')">
+                                    <span class="retailer-name">ðŸ”ï¸ Cape Union Mart</span>
+                                    <span>
+                                        <span class="retailer-price best">R8,999 âœ“ Best</span>
+                                        <span class="commission-tag">7% = R630</span>
+                                    </span>
+                                </a>
+                                <a href="https://www.takealot.com/garmin-fenix-7?aff=YOUR_TAKEALOT_ID" target="_blank" rel="nofollow sponsored" class="affiliate-link" onclick="trackClick('garmin-takealot')">
+                                    <span class="retailer-name">ðŸ“¦ Takealot</span>
+                                    <span class="retailer-price">R9,499</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="deal-footer" style="margin-top: 1rem;">
+                            <div class="deal-verified">
+                                <span>âœ“</span>
+                                <span>Verified 30m ago</span>
+                            </div>
+                        </div>
+                        <a href="https://www.capeunionmart.co.za/garmin-fenix-7?aff=YOUR_CUM_ID" target="_blank" rel="nofollow sponsored" class="grab-btn" onclick="trackClick('garmin-main')">
+                            Shop Best Deal â†’ Earn R630
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FASHION SECTION -->
+            <div class="section-header">
+                <h2 class="section-title">ðŸ‘Ÿ Fashion & Lifestyle <span style="font-size: 0.875rem; font-weight: 500; color: var(--text-muted);">(Highest Commission)</span></h2>
+                <span class="commission-badge">7-10% Commission</span>
+            </div>
+
+            <div class="deals-grid">
+                <!-- DEAL 4: Zando Sneakers -->
+                <div class="deal-card fashion">
+                    <div class="deal-header">
+                        <div class="deal-badges">
+                            <span class="badge badge-fashion">NEW SEASON</span>
+                            <span class="badge badge-commission">9% COMM</span>
+                        </div>
+                        <div class="deal-actions">
+                            <button class="action-btn" onclick="toggleSave(this)">â™¡</button>
+                            <button class="action-btn">â†—ï¸</button>
+                        </div>
+                        <div class="deal-image">ðŸ‘Ÿ</div>
+                        <div class="deal-timer">
+                            <span>â°</span>
+                            Trending now
+                        </div>
+                    </div>
+                    <div class="deal-content">
+                        <div class="deal-meta">
+                            <span class="deal-category fashion">Sneakers</span>
+                            <span class="deal-rating">â­ 4.6 (1,203)</span>
+                        </div>
+                        <h3 class="deal-title">Zando Premium Sneaker Collection</h3>
+                        <p class="deal-description">Street style essentials. Nike, Adidas, Puma exclusives. Fresh drops weekly. The sneakerhead's paradise.</p>
+                        <div class="deal-price-row">
+                            <span class="price-current">From R899</span>
+                            <span class="price-original">R1,299</span>
+                            <span class="price-saved">Save R400</span>
+                        </div>
+                        
+                        <div class="affiliate-section">
+                            <div class="affiliate-header">
+                                <span class="affiliate-title">Shop & Earn Commission</span>
+                                <span class="affiliate-earn">You earn: R81</span>
+                            </div>
+                            <div class="affiliate-links">
+                                <a href="https://www.zando.co.za/sneakers/?aff=YOUR_ZANDO_ID" target="_blank" rel="nofollow sponsored" class="affiliate-link best" onclick="trackClick('sneakers-zando')">
+                                    <span class="retailer-name">ðŸ‘Ÿ Zando</span>
+                                    <span>
+                                        <span class="retailer-price best">R899 âœ“ Best</span>
+                                        <span class="commission-tag">9% = R81</span>
+                                    </span>
+                                </a>
+                                <a href="https://www.mrprice.co.za/sneakers?aff=YOUR_MRPRICE_ID" target="_blank" rel="nofollow sponsored" class="affiliate-link" onclick="trackClick('sneakers-mrprice')">
+                                    <span class="retailer-name">ðŸ·ï¸ Mr Price</span>
+                                    <span class="retailer-price">R699</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="deal-footer" style="margin-top: 1rem;">
+                            <div class="deal-verified">
+                                <span>âœ“</span>
+                                <span>Verified 1h ago</span>
+                            </div>
+                        </div>
+                        <a href="https://www.zando.co.za/sneakers/?aff=YOUR_ZANDO_ID" target="_blank" rel="nofollow sponsored" class="grab-btn" onclick="trackClick('sneakers-main')">
+                            Shop Zando â†’ Earn 9%
+                        </a>
+                    </div>
+                </div>
+
+                <!-- DEAL 5: Mr Price Tech Accessories -->
+                <div class="deal-card fashion">
+                    <div class="deal-header">
+                        <div class="deal-badges">
+                            <span class="badge badge-discount">-25% OFF</span>
+                            <span class="badge badge-commission">7% COMM</span>
+                        </div>
+                        <div class="deal-actions">
+                            <button class="action-btn" onclick="toggleSave(this)">â™¡</button>
+                            <button class="action-btn">â†—ï¸</button>
+                        </div>
+                        <div class="deal-image">ðŸ’¼</div>
+                        <div class="deal-timer">
+                            <span>â°</span>
+                            Limited stock
+                        </div>
+                    </div>
+                    <div class="deal-content">
+                        <div class="deal-meta">
+                            <span class="deal-category fashion">Accessories</span>
+                            <span class="deal-rating">â­ 4.5 (892)</span>
+                        </div>
+                        <h3 class="deal-title">Mr Price Tech Style Bundle</h3>
+                        <p class="deal-description">Laptop bags, phone cases, tech organizers. Fashion meets function. Style your gadgets.</p>
+                        <div class="deal-price-row">
+                            <span class="price-current">R299</span>
+                            <span class="price-original">R399</span>
+                            <span class="price-saved">Save R100</span>
+                        </div>
+                        
+                        <div class="affiliate-section">
+                            <div class="affiliate-header">
+                                <span class="affiliate-title">Shop & Earn Commission</span>
+                                <span class="affiliate-earn">You earn: R21</span>
+                            </div>
+                            <div class="affiliate-links">
+                                <a href="https://www.mrprice.co.za/tech-accessories?aff=YOUR_MRPRICE_ID" target="_blank" rel="nofollow sponsored" class="affiliate-link best" onclick="trackClick('accessories-mrprice')">
+                                    <span class="retailer-name">ðŸ·ï¸ Mr Price</span>
+                                    <span>
+                                        <span class="retailer-price best">R299 âœ“ Best</span>
+                                        <span class="commission-tag">7% = R21</span>
+                                    </span>
+                                </a>
+                                <a href="https://www.zando.co.za/accessories?aff=YOUR_ZANDO_ID" target="_blank" rel="nofollow sponsored" class="affiliate-link" onclick="trackClick('accessories-zando')">
+                                    <span class="retailer-name">ðŸ‘Ÿ Zando</span>
+                                    <span class="retailer-price">R349</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="deal-footer" style="margin-top: 1rem;">
+                            <div class="deal-verified">
+                                <span>âœ“</span>
+                                <span>Verified 3h ago</span>
+                            </div>
+                        </div>
+                        <a href="https://www.mrprice.co.za/tech-accessories?aff=YOUR_MRPRICE_ID" target="_blank" rel="nofollow sponsored" class="grab-btn" onclick="trackClick('accessories-main')">
+                            Shop Mr Price â†’ Earn 7%
+                        </a>
+                    </div>
+                </div>
+
+                <!-- DEAL 6: Mantality Men's Lifestyle -->
+                <div class="deal-card">
+                    <div class="deal-header">
+                        <div class="deal-badges">
+                            <span class="badge badge-trending">TRENDING</span>
+                            <span class="badge badge-commission">10% COMM</span>
+                        </div>
+                        <div class="deal-actions">
+                            <button class="action-btn" onclick="toggleSave(this)">â™¡</button>
+                            <button class="action-btn">â†—ï¸</button>
+                        </div>
+                        <div class="deal-image">ðŸŽ’</div>
+                        <div class="deal-timer">
+                            <span>â°</span>
+                            Hot right now
+                        </div>
+                    </div>
+                    <div class="deal-content">
+                        <div class="deal-meta">
+                            <span class="deal-category">Men's Lifestyle</span>
+                            <span class="deal-rating">â­ 4.8 (567)</span>
+                        </div>
+                        <h3 class="deal-title">Mantality Gadget & Style Bundle</h3>
+                        <p class="deal-description">Premium men's gadgets, grooming tech, lifestyle accessories. The modern man's essential kit.</p>
+                        <div class="deal-price-row">
+                            <span class="price-current">R1,299</span>
+                            <span class="price-original">R1,799</span>
+                            <span class="price-saved">Save R500</span>
+                        </div>
+                        
+                        <div class="affiliate-section">
+                            <div class="affiliate-header">
+                                <span class="affiliate-title">Shop & Earn Commission</span>
+                                <span class="affiliate-earn">You earn: R130</span>
+                            </div>
+                            <div class="affiliate-links">
+                                <a href="https://www.mantality.co.za/gadgets?aff=YOUR_MANTALITY_ID" target="_blank" rel="nofollow sponsored" class="affiliate-link best" onclick="trackClick('mantality-bundle')">
+                                    <span class="retailer-name">ðŸŽ’ Mantality</span>
+                                    <span>
+                                        <span class="retailer-price best">R1,299 âœ“ Best</span>
+                                        <span class="commission-tag">10% = R130</span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="deal-footer" style="margin-top: 1rem;">
+                            <div class="deal-verified">
+                                <span>âœ“</span>
+                                <span>Verified 2h ago</span>
+                            </div>
+                        </div>
+                        <a href="https://www.mantality.co.za/gadgets?aff=YOUR_MANTALITY_ID" target="_blank" rel="nofollow sponsored" class="grab-btn" onclick="trackClick('mantality-main')">
+                            Shop Mantality â†’ Earn 10%
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Apply to Affiliate Programs Section -->
+        <div class="retailer-apply">
+            <h3>ðŸš€ Apply to These Programs to Unlock All Deals</h3>
+            <p>Get approved in 24-72 hours and start earning 4-10% commission on every sale. All programs are verified South African retailers.</p>
+            
+            <div class="apply-grid">
+                <div class="apply-card">
+                    <h4>ðŸ‘Ÿ Zando</h4>
+                    <div class="commission">9% Commission</div>
+                    <div class="status">âœ… Available via AdMarula</div>
+                    <a href="https://www.admarula.com/apply" target="_blank" class="apply-btn">Apply Now</a>
+                </div>
+                <div class="apply-card">
+                    <h4>ðŸ·ï¸ Mr Price</h4>
+                    <div class="commission">7% Commission</div>
+                    <div class="status">âœ… Available via CJ Affiliate</div>
+                    <a href="https://www.cj.com/apply" target="_blank" class="apply-btn">Apply Now</a>
+                </div>
+                <div class="apply-card">
+                    <h4>ðŸŽ’ Mantality</h4>
+                    <div class="commission">10% Commission</div>
+                    <div class="status">âœ… Direct Program</div>
+                    <a href="https://www.mantality.co.za/affiliate" target="_blank" class="apply-btn">Apply Now</a>
+                </div>
+                <div class="apply-card">
+                    <h4>ðŸ“¦ Takealot</h4>
+                    <div class="commission">4% Commission</div>
+                    <div class="status">âš ï¸ Limited Program</div>
+                    <a href="https://www.takealot.com/affiliate" target="_blank" class="apply-btn">Check Status</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>ðŸ”¥ One Shop Style Hub</h3>
+                    <p>South Africa's first fashion + tech deal aggregator. We partner with Zando, Mr Price, Mantality and premium retailers to bring you style tech with real cashback opportunities.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">ð•</a>
+                        <a href="#" class="social-link">ðŸ“˜</a>
+                        <a href="#" class="social-link">ðŸ“¸</a>
+                        <a href="#" class="social-link">â–¶ï¸</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Partner Programs</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://www.admarula.com" target="_blank">AdMarula Network</a></li>
+                        <li><a href="https://www.cj.com" target="_blank">CJ Affiliate</a></li>
+                        <li><a href="https://www.mantality.co.za/affiliate" target="_blank">Mantality Direct</a></li>
+                        <li><a href="https://affiliate-program.amazon.com" target="_blank">Amazon Associates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Style Tech</a></li>
+                        <li><a href="#">Sneakers</a></li>
+                        <li><a href="#">Audio Fashion</a></li>
+                        <li><a href="#">Wearables</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Affiliate Disclosure</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Â© 2026 One Shop Style Hub. All rights reserved. Made with ðŸ”¥ in South Africa. Affiliate links used throughout â€” we earn 4-10% commission on qualifying purchases.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-icon">âœ“</div>
+        <div>
+            <div style="font-weight: 700;" id="toast-title">Success!</div>
+            <div style="font-size: 0.875rem; color: var(--text-secondary);" id="toast-message">Action completed</div>
+        </div>
+    </div>
+
+    <script>
+        // Affiliate tracking
+        function trackClick(product) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'affiliate_click', {
+                    'product': product,
+                    'source': 'oneshopstylehub'
+                });
+            }
+            console.log('Affiliate click:', product);
+        }
+
+        // Toast notifications
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Save toggle
+        function toggleSave(btn) {
+            if (btn.textContent === 'â™¡') {
+                btn.textContent = 'â™¥';
+                btn.style.color = '#ff4081';
+                showToast('Added to favorites!');
+            } else {
+                btn.textContent = 'â™¡';
+                btn.style.color = 'white';
+                showToast('Removed from favorites');
+            }
+        }
+
+        // Category switching
+        document.querySelectorAll('.pill').forEach(pill => {
+            pill.addEventListener('click', function() {
+                document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                showToast(`Filtering: ${this.textContent}`);
+            });
+        });
+
+        // Countdown timers
+        function updateTimers() {
+            document.querySelectorAll('.deal-timer').forEach(timer => {
+                const text = timer.textContent;
+                if (text.includes(':')) {
+                    let [hours, minutes, seconds] = text.match(/\d+/g).map(Number);
+                    if (seconds > 0) seconds--;
+                    else if (minutes > 0) { minutes--; seconds = 59; }
+                    else if (hours > 0) { hours--; minutes = 59; seconds = 59; }
+                    const timeStr = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                    timer.innerHTML = `<span>â°</span> Ends in ${timeStr}`;
+                }
+            });
+        }
+        setInterval(updateTimers, 1000);
+
+        // Smooth scroll
+        document.querySelector('.btn-primary').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#deals').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
